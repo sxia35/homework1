@@ -1,0 +1,32 @@
+---
+title: "Bridges Homework"
+author: "Steven Xia"
+date: "2/4/2021"
+output: github_document
+---
+
+[**My Github Repository Here**](https://github.com/sxia35/homework1.git)
+
+```{r include=FALSE}
+library(tidyverse)
+```
+
+```{r}
+districtColumbia <- read_csv("https://www.fhwa.dot.gov/bridge/nbi/2019/delimited/DC19.txt")
+```
+
+```{r}
+districtColumbiaSmall <- select(districtColumbia, STRUCTURE_NUMBER_008, YEAR_BUILT_027, 
+                                STATE_CODE_001, COUNTY_CODE_003, PLACE_CODE_004,
+                                DECK_COND_058, SUPERSTRUCTURE_COND_059, SUBSTRUCTURE_COND_060,
+                                CHANNEL_COND_061, CULVERT_COND_062, OPR_RATING_METH_063,
+                                OPERATING_RATING_064, INV_RATING_METH_065, INVENTORY_RATING_066)
+                                
+head(districtColumbiaSmall)
+```
+
+```{r}
+ggplot(districtColumbiaSmall, aes(x = YEAR_BUILT_027, y = DECK_COND_058)) +
+  geom_jitter(width = 0.25)
+
+```
